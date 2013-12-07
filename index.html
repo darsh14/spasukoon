@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	Spa Sukoon - Spa, Fitness, Relax, Body, Well-Being, Hyderabad, Andhra Pradhesh, Dinazs
+</title>
+    <!--link href="lib/supersized/slideshow/css/supersized.css" rel="stylesheet" type="text/css" /-->
+    <link href="lib/Elastislide/css/elastislide.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--script src="lib/supersized/slideshow/js/supersized.3.2.7.min.js" type="text/javascript"></script-->
+    <script type="text/javascript" src="lib/vegas/jquery.vegas.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/vegas/jquery.vegas.css"/>
+    <link rel="stylesheet" type="text/css" href="css/spa.css"/>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var $window = $(window);
+        console.log($window.width()/2);
+        
+        $(window).resize(function() {
+            $("#logo").css({
+                'left':'50%',
+                'right':'50%',
+                'margin-left':'-200px',
+            });
+        });
+
+
+                
+       $('div[data-type="background"]').each(function(){
+
+         var $bgobj = $(this); // assigning the object
+         $bgobj.css({'height':$window.height().toString()});
+                        
+          $(window).scroll(function() 
+          {   
+            var yPos = -( ($window.scrollTop() - $bgobj.offset().top) / $bgobj.data('speed'));                       
+            //var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
+            var coords = '50% '+ yPos + 'px';
+            // $bgobj.css({ backgroundPosition: coords });
+
+            $bgobj.css({ 
+                 backgroundPosition: coords,
+                 '-webkit-background-size': 'cover',
+                 '-moz-background-size': 'cover',
+                 '-o-background-size': 'cover',
+                 'background-size': 'cover'
+             });
+          });
+
+          $(window).load(function() 
+          {   
+            //var yPos = -( ($window.scrollTop() - $bgobj.offset().top) / $bgobj.data('speed'));                       
+            var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
+            var coords = '50% '+ yPos + 'px';
+            // $bgobj.css({ backgroundPosition: coords });
+
+            $bgobj.css({ 
+                 backgroundPosition: coords,
+                 '-webkit-background-size': 'cover',
+                 '-moz-background-size': 'cover',
+                 '-o-background-size': 'cover',
+                 'background-size': 'cover'
+             });
+          });
+
+        }); 
+
+        var contactText = "Contact Us<br><hr>"+
+                          "Spa Sukoon, 1st Floor, Kimtee Banjara Heights<br />Above Heritage Fresh Supermarket<br />Road No. 12, Banjara Hills,<br />Hyderabad - 500034.<br />India<br><br>"+
+                          "Book an appointment: +91 98480 25988<br>Alternate Contact Tel: +91 40 23314607<br><hr>";
+
+        $("#contact p").html(contactText);
+
+        
+        $('div[data-type="background"]').vegas('overlay', {
+            src:'lib/vegas/overlays/13.png',
+            opacity: 0.25,
+        });
+
+        $('a').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+              console.log(target);
+
+              if (target.length) {
+                $('html,body').animate({
+                  scrollTop: target.offset().top
+                }, 1000);
+
+                var id = $(target).attr('id');
+                if(id === 'fullbody' || id === 'face' || id == 'back'|| id == 'wraps' || id == 'hand_feet') 
+                    $("div#menuitems p").css({
+                        'color':'#720B65',
+                    });
+                else
+                    $("div#menuitems p").css({
+                        'color':'#FFFFFF',
+                    });
+
+                return false;
+              }
+            }
+          });
+
+        $('a').hover(function() {
+            var id = $(this).attr('id');
+            $("div#menuitems").show();
+            // $('p#'+id).show();
+        },function() {
+            var id = $(this).attr('id');
+            // $('p#'+id).hide();
+            $("div#menuitems").hide();
+        });
+
+    });          
+</script>
+</head>
+<body>
+    <div id="menuWrapper">
+    <div id="navigate">
+        <u><p id="title">Menu</p></u>
+        <a id="1" href="#home"></a>
+        <a id="2" href="#wellness"></a>
+        <a id="3" href="#fullbody"></a>
+        <a id="4" href="#face"></a>
+        <a id="5" href="#scrub"></a>
+        <a id="6" href="#back"></a>
+        <a id="7" href="#wraps"></a>
+        <a id="8" href="#hand_feet"></a>
+        <a id="9" href="#contact"></a>
+      </div>
+      <div id="menuitems">
+        <b>
+        <p id="1" class="describe">Home</p>
+        <p id="2" class="describe">Wellness</p>
+        <p id="3" class="describe">Full Body Massages</p>
+        <p id="4" class="describe">Facials</p>
+        <p id="5" class="describe">Scrubs and Polishes</p>
+        <p id="6" class="describe">Back Treatments</p>
+        <p id="7" class="describe">Body Wraps</p>
+        <p id="8" class="describe">Manicures and Pedicures</p>
+        <p id="9" class="describe">Contact</p>
+    </b>
+      </div>
+    </div>
+<div id="home" data-speed="6" data-type="background">
+  <img id="logo" src="img/logo_small.png"/>
+</div>
+<div id="wellness" data-speed="6" data-type="background">
+</div>
+<div id="fullbody" data-speed="6" data-type="background">
+</div>
+<div id="face" data-speed="6" data-type="background">
+</div>
+<div id="scrub" data-speed="6" data-type="background">
+</div>
+<div id="back" data-speed="6" data-type="background">
+</div>
+<div id="wraps" data-speed="6" data-type="background">
+</div>
+<div id="hand_feet" data-speed="6" data-type="background">
+</div>
+<div id="contact" data-speed="6" data-type="background">
+</div>
+</body>
+</html>
